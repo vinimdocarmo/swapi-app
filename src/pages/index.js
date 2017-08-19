@@ -5,7 +5,8 @@ import Typography from 'material-ui/Typography';
 import withRoot from '../components/withRoot';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import StarWarDataList from '../components/star-war-data-list/StarWarDataList';
+import Button from 'material-ui/Button';
+import StarWarDataList from '../components/star-wars-data-list/StarWarDataList';
 
 class Index extends Component {
     constructor(props) {
@@ -18,9 +19,10 @@ class Index extends Component {
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <Typography type="title" color="inherit">
+                        <Typography type="title" color="inherit" style={{flex: 1}}>
                             {this.APP_NAME}
                         </Typography>
+                        <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
                     </Toolbar>
                 </AppBar>
                 <StarWarDataList/>
