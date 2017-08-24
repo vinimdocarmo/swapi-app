@@ -6,27 +6,27 @@ import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
 import SWAPI from '../../api/SWAPI';
 
-class FilmsList extends React.Component {
+class PlanetsList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { films: {} };
+        this.state = { planets: {} };
     }
 
     componentDidMount() {
         SWAPI
-            .getFilms()
-            .then(films => this.setState({ films }));
+            .getPlanets()
+            .then(planets => this.setState({ planets: planets }));
     }
 
     render() {
-        const filemsList = this.state.films.results || [];
+        const planetsList = this.state.planets.results || [];
 
         return (
-            <List subheader={<ListSubheader>Films</ListSubheader>}>
+            <List subheader={<ListSubheader>Planets</ListSubheader>}>
                 {
-                    filemsList.map(film =>
-                        <ListItem button key={film.title}>
-                            <ListItemText primary={film.title}/>
+                    planetsList.map(planet =>
+                        <ListItem button key={planet.name}>
+                            <ListItemText primary={planet.name}/>
                             <ListItemSecondaryAction>
                                 <IconButton aria-label="Delete">
                                     <DeleteIcon/>
@@ -40,4 +40,4 @@ class FilmsList extends React.Component {
     }
 }
 
-export default FilmsList;
+export default PlanetsList;
