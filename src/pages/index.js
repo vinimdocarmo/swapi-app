@@ -6,27 +6,39 @@ import withRoot from '../components/withRoot';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
-import StarWarDataList from '../components/star-wars-data-list/StarWarDataList';
+import {UIRouter, UIView, UISrefActive, UISref} from '@uirouter/react';
+import RouteConfig from '../config/RouteConfig';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
 
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.APP_NAME = 'Star War Wiki';
+        this.APP_NAME = 'Star Wars Wiki';
     }
 
     render() {
         return (
-            <div>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography type="title" color="inherit" style={{flex: 1}}>
-                            {this.APP_NAME}
-                        </Typography>
-                        <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
-                    </Toolbar>
-                </AppBar>
-                <StarWarDataList/>
-            </div>
+            <UIRouter plugins={RouteConfig.plugins} states={Object.values(RouteConfig.states)}>
+                <div>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <IconButton color="contrast" aria-label="Menu">
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography type="title" color="inherit" style={{flex: 1}}>
+                                <UISrefActive class="active">
+                                    <UISref to={"home"}>
+                                        <span style={{cursor: 'pointer'}}>{this.APP_NAME}</span>
+                                    </UISref>
+                                </UISrefActive>
+                            </Typography>
+                            <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
+                        </Toolbar>
+                    </AppBar>
+                    <UIView/>
+                </div>
+            </UIRouter>
         );
     }
 }

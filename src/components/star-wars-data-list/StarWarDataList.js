@@ -8,6 +8,7 @@ import {GridList, GridListTile, GridListTileBar} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import OpenInNewIcon from 'material-ui-icons/OpenInNew';
 import dataList from './dataList';
+import {UISrefActive, UISref} from '@uirouter/react';
 
 const styles = theme => ({
     container: {
@@ -35,15 +36,20 @@ class StarWarsDateList extends React.Component {
             <div className={classes.container}>
                 <Paper className={classes.root}>
                     <GridList cellHeight={260} cols={3} className={classes.gridList}>
-                        {dataList.map(tile =>
-                            <GridListTile key={tile.img}>
-                                <img src={tile.img} alt={tile.title}/>
+                        {dataList.map(data =>
+                            <GridListTile key={data.img}>
+                                <img src={data.img} alt={data.title}/>
                                 <GridListTileBar
-                                    title={tile.title}
+                                    title={data.title}
                                     actionIcon={
-                                        <IconButton onClick={() => {}}>
-                                            <OpenInNewIcon color="rgba(255, 255, 255, 0.54)"/>
-                                        </IconButton>}
+                                        <UISrefActive class="active">
+                                            <UISref to={data.route}>
+                                                <IconButton onClick={() => {}}>
+                                                    <OpenInNewIcon color="rgba(255, 255, 255, 0.54)"/>
+                                                </IconButton>
+                                            </UISref>
+                                        </UISrefActive>
+                                    }
                                 />
                             </GridListTile>,
                         )}

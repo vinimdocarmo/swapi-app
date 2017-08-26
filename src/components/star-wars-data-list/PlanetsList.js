@@ -9,13 +9,13 @@ import SWAPI from '../../api/SWAPI';
 class PlanetsList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { planets: {} };
+        this.state = {planets: {}};
     }
 
     componentDidMount() {
         SWAPI
             .getPlanets()
-            .then(planets => this.setState({ planets: planets }));
+            .then(planets => this.setState({planets}));
     }
 
     render() {
