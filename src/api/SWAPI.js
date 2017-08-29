@@ -1,43 +1,48 @@
-import request from 'request';
+import axios from 'axios';
+
+const swapiFetch = axios.create({
+    baseURL: 'https://swapi.co/api/',
+    transformResponse: [data => JSON.parse(data)]
+});
 
 export default class SWAPI {
     static getPeople() {
-        return SWAPIResquest('people');
+        return swapiFetch
+            .get('/people')
+            .then(property('data'));
     }
 
     static getStarships() {
-        return SWAPIResquest('starships');
+        return swapiFetch
+            .get('/starships')
+            .then(property('data'));
     }
 
     static getVehicles() {
-        return SWAPIResquest('vehicles');
+        return swapiFetch
+            .get('/vehicles')
+            .then(property('data'));
     }
 
     static getPlanets() {
-        return SWAPIResquest('planets');
+        return swapiFetch
+            .get('/planets')
+            .then(property('data'));
     }
 
     static getFilms() {
-        return SWAPIResquest('films');
+        return swapiFetch
+            .get('/films')
+            .then(property('data'));
     }
 
     static getSpecies() {
-        return SWAPIResquest('species');
+        return swapiFetch
+            .get('/species')
+            .then(property('data'));
     }
 };
 
-function SWAPIResquest(path) {
-    return new Promise((resolve, reject) => {
-        request(`https://swapi.co/api/${path}`, (error, response, body) => {
-            if (response.statusCode === 200) {
-                try {
-                    resolve(JSON.parse(body));
-                } catch (e) {
-                    reject(e);
-                }
-            } else {
-                reject(error);
-            }
-        });
-    });
+function property(prop) {
+    return object => object[prop];
 }
