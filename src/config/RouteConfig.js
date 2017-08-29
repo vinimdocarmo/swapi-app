@@ -1,6 +1,6 @@
 import Home from '../pages/Home';
 import PeoplePage from '../pages/PeoplePage';
-import FilmsPage from '../pages/FilmsPage';
+import FilmsPage from '../containers/FilmsPage';
 import SpeciesPage from '../pages/SpeciesPage';
 import VehiclesPage from '../pages/VehiclesPage';
 import StarshipsPage from '../pages/StarshipsPage';
