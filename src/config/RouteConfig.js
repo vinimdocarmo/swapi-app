@@ -3,7 +3,7 @@ import PeoplePage from '../pages/PeoplePage';
 import FilmsPage from '../containers/FilmsPage';
 import SpeciesPage from '../pages/SpeciesPage';
 import VehiclesPage from '../pages/VehiclesPage';
-import StarshipsPage from '../pages/StarshipsPage';
+import StarshipsPage from '../containers/StarshipsPage';
 import PlanetPage from '../containers/PlanetsPage';
 import {pushStateLocationPlugin} from '@uirouter/react';
 
