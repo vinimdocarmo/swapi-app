@@ -11,11 +11,19 @@ import RouteConfig from '../config/RouteConfig';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Progress from '../containers/Progress';
+import SideNav from '../components/SideNav';
 
 class Index extends Component {
     constructor(props) {
         super(props);
         this.APP_NAME = 'Star Wars Wiki';
+        this.state = { sideNavOpen: false };
+
+        this.handleSideNavOpen = this.handleSideNavOpen.bind(this);
+    }
+
+    handleSideNavOpen() {
+        this.setState({sideNavOpen: true});
     }
 
     render() {
@@ -24,7 +32,8 @@ class Index extends Component {
                 <div>
                     <AppBar position="static">
                         <Toolbar>
-                            <IconButton color="contrast" aria-label="Menu">
+                            <IconButton color="contrast" aria-label="Menu"
+                            onClick={() => this.handleSideNavOpen()}>
                                 <MenuIcon />
                             </IconButton>
                             <Typography type="title" color="inherit" style={{flex: 1}}>
@@ -38,6 +47,7 @@ class Index extends Component {
                         </Toolbar>
                     </AppBar>
                     <Progress/>
+                    <SideNav open={this.state.sideNavOpen}/>
                     <UIView/>
                 </div>
             </UIRouter>
