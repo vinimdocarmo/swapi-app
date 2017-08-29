@@ -1,9 +1,7 @@
 // @flow weak
 
 import React from 'react';
-import List, {ListItem, ListItemText, ListItemSecondaryAction, ListSubheader} from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
-import DeleteIcon from 'material-ui-icons/Delete';
+import List, {ListItem, ListItemText, ListSubheader} from 'material-ui/List';
 
 class PeopleList extends React.Component {
     constructor(props) {
@@ -24,11 +22,6 @@ class PeopleList extends React.Component {
                     peopleList.map(person =>
                         <ListItem button key={person.name}>
                             <ListItemText primary={person.name}/>
-                            <ListItemSecondaryAction>
-                                <IconButton aria-label="Delete">
-                                    <DeleteIcon/>
-                                </IconButton>
-                            </ListItemSecondaryAction>
                         </ListItem>
                     )
                 }
