@@ -10,6 +10,7 @@ import {UIRouter, UIView, UISrefActive, UISref} from '@uirouter/react';
 import RouteConfig from '../config/RouteConfig';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import Progress from '../containers/Progress';
 
 class Index extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class Index extends Component {
                             <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
                         </Toolbar>
                     </AppBar>
+                    <Progress/>
                     <UIView/>
                 </div>
             </UIRouter>

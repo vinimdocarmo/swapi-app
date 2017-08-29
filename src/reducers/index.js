@@ -5,6 +5,7 @@ import StarshipsReducer from './StarshipsReducer';
 import PeopleReducer from './PeopleReducer';
 import SpeciesReducer from './SpeciesReducer';
 import VehiclesReducer from './VehiclesReducer';
+import LoadingReducer from './LoadingReducer';
 
 const appReducer = combineReducers({
     planets: PlanetsReducer,
@@ -12,7 +13,8 @@ const appReducer = combineReducers({
     starships: StarshipsReducer,
     people: PeopleReducer,
     species: SpeciesReducer,
-    vehicles: VehiclesReducer
+    vehicles: VehiclesReducer,
+    isFetchingData: LoadingReducer
 });
 
 export default appReducer;
