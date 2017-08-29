@@ -7,7 +7,6 @@ import Paper from 'material-ui/Paper';
 import {GridList, GridListTile, GridListTileBar} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import OpenInNewIcon from 'material-ui-icons/OpenInNew';
-import dataList from './dataList';
 import {UISrefActive, UISref} from '@uirouter/react';
 
 const styles = theme => ({
@@ -29,8 +28,14 @@ const styles = theme => ({
 });
 
 class StarWarsDateList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { dataList: props.dataList };
+    }
+
     render() {
         const {classes} = this.props;
+        const dataList = this.state.dataList;
 
         return (
             <div className={classes.container}>
@@ -43,7 +48,7 @@ class StarWarsDateList extends React.Component {
                                     title={data.title}
                                     actionIcon={
                                         <UISrefActive class="active">
-                                            <UISref to={data.route}>
+                                            <UISref to={data.routeName}>
                                                 <IconButton onClick={() => {}}>
                                                     <OpenInNewIcon color="rgba(255, 255, 255, 0.54)"/>
                                                 </IconButton>

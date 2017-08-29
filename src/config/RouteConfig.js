@@ -1,10 +1,10 @@
-import StarWarDataList from '../components/star-wars-data-list/StarWarDataList';
-import PeopleList from '../components/star-wars-data-list/PeopleList';
-import FilmsList from '../components/star-wars-data-list/FilmsList';
-import SpeciesList from '../components/star-wars-data-list/SpeciesList';
-import VehiclesList from '../components/star-wars-data-list/VehiclesList';
-import StarshipsList from '../components/star-wars-data-list/StarshipsList';
-import PlanetsList from '../components/star-wars-data-list/PlanetsList';
+import Home from '../pages/Home';
+import PeoplePage from '../pages/PeoplePage';
+import FilmsPage from '../pages/FilmsPage';
+import SpeciesPage from '../pages/SpeciesPage';
+import VehiclesPage from '../pages/VehiclesPage';
+import StarshipsPage from '../pages/StarshipsPage';
+import PlanetPage from '../pages/PlanetsPage';
 import {pushStateLocationPlugin} from '@uirouter/react';
 
 export default class RouteConfig {
@@ -12,37 +12,37 @@ export default class RouteConfig {
         home: {
             name: 'home',
             url: '/',
-            component: StarWarDataList
+            component: Home
         },
         people: {
             name: 'people',
             url: '/people',
-            component: PeopleList
+            component: PeoplePage
         },
         planets: {
             name: 'planets',
             url: '/planets',
-            component: PlanetsList
+            component: PlanetPage
         },
         films: {
             name: 'films',
             url: '/films',
-            component: FilmsList
+            component: FilmsPage
         },
         species: {
             name: 'species',
             url: '/species',
-            component: SpeciesList
+            component: SpeciesPage
         },
         vehicles: {
             name: 'vehicles',
             url: '/vehicles',
-            component: VehiclesList
+            component: VehiclesPage
         },
         starships: {
             name: 'starships',
             url: '/starships',
-            component: StarshipsList
+            component: StarshipsPage
         }
     };
 

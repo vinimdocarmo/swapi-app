@@ -4,29 +4,26 @@ import React from 'react';
 import List, {ListItem, ListItemText, ListItemSecondaryAction, ListSubheader} from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
-import SWAPI from '../../api/SWAPI';
 
-class PeopleList extends React.Component {
+class FilmsList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { people: {} };
+        this.state = { films: props.films } ;
     }
 
-    componentDidMount() {
-        SWAPI
-            .getPeople()
-            .then(people => this.setState({ people }));
+    componentWillReceiveProps({films}) {
+        this.setState({films});
     }
 
     render() {
-        const peopleList = this.state.people.results || [];
+        const filemsList = this.state.films.results || [];
 
         return (
-            <List subheader={<ListSubheader>People</ListSubheader>}>
+            <List subheader={<ListSubheader>Films</ListSubheader>}>
                 {
-                    peopleList.map(person =>
-                        <ListItem button key={person.name}>
-                            <ListItemText primary={person.name}/>
+                    filemsList.map(film =>
+                        <ListItem button key={film.title}>
+                            <ListItemText primary={film.title}/>
                             <ListItemSecondaryAction>
                                 <IconButton aria-label="Delete">
                                     <DeleteIcon/>
@@ -40,4 +37,4 @@ class PeopleList extends React.Component {
     }
 }
 
-export default PeopleList;
+export default FilmsList;

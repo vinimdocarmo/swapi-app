@@ -4,29 +4,26 @@ import React from 'react';
 import List, {ListItem, ListItemText, ListItemSecondaryAction, ListSubheader} from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
-import SWAPI from '../../api/SWAPI';
 
-class PlanetsList extends React.Component {
+class SpeciesList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {planets: {}};
+        this.state = { species: props.species };
     }
 
-    componentDidMount() {
-        SWAPI
-            .getPlanets()
-            .then(planets => this.setState({planets}));
+    componentWillReceiveProps({species}) {
+        this.setState({species});
     }
 
     render() {
-        const planetsList = this.state.planets.results || [];
+        const speciesList = this.state.species.results || [];
 
         return (
-            <List subheader={<ListSubheader>Planets</ListSubheader>}>
+            <List subheader={<ListSubheader>Species</ListSubheader>}>
                 {
-                    planetsList.map(planet =>
-                        <ListItem button key={planet.name}>
-                            <ListItemText primary={planet.name}/>
+                    speciesList.map(specie =>
+                        <ListItem button key={specie.name}>
+                            <ListItemText primary={specie.name}/>
                             <ListItemSecondaryAction>
                                 <IconButton aria-label="Delete">
                                     <DeleteIcon/>
@@ -40,4 +37,4 @@ class PlanetsList extends React.Component {
     }
 }
 
-export default PlanetsList;
+export default SpeciesList;

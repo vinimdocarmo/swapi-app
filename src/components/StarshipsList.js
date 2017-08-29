@@ -4,30 +4,26 @@ import React from 'react';
 import List, {ListItem, ListItemText, ListItemSecondaryAction, ListSubheader} from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
-import SWAPI from '../../api/SWAPI';
 
-
-class VehiclesList extends React.Component {
+class StarshipsList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { vehicles: {} };
+        this.state = { starships: props.starships };
     }
 
-    componentDidMount() {
-        SWAPI
-            .getVehicles()
-            .then(vehicles => this.setState({ vehicles: vehicles }));
+    componentWillReceiveProps({starships}) {
+        this.setState({starships});
     }
 
     render() {
-        const vehiclesList = this.state.vehicles.results || [];
+        const starshipsList = this.state.starships.results || [];
 
         return (
-            <List subheader={<ListSubheader>Vehicles</ListSubheader>}>
+            <List subheader={<ListSubheader>Starships</ListSubheader>}>
                 {
-                    vehiclesList.map(vehicle =>
-                        <ListItem button key={vehicle.name}>
-                            <ListItemText primary={vehicle.name}/>
+                    starshipsList.map(starships =>
+                        <ListItem button key={starships.name}>
+                            <ListItemText primary={starships.name}/>
                             <ListItemSecondaryAction>
                                 <IconButton aria-label="Delete">
                                     <DeleteIcon/>
@@ -41,4 +37,4 @@ class VehiclesList extends React.Component {
     }
 }
 
-export default VehiclesList;
+export default StarshipsList;
