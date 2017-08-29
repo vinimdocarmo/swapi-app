@@ -4,6 +4,8 @@ import React from 'react';
 import List, {ListItem, ListItemText, ListItemSecondaryAction, ListSubheader} from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
+import removePlanet from '../actions/removePlanet';
+import {connect} from 'react-redux';
 
 class PlanetsList extends React.Component {
     constructor(props) {
@@ -25,7 +27,8 @@ class PlanetsList extends React.Component {
                         <ListItem button key={planet.name}>
                             <ListItemText primary={planet.name}/>
                             <ListItemSecondaryAction>
-                                <IconButton aria-label="Delete">
+                                <IconButton aria-label="Delete"
+                                            onClick={() => this.props.removePlanet(planet)}>
                                     <DeleteIcon/>
                                 </IconButton>
                             </ListItemSecondaryAction>
@@ -37,4 +40,4 @@ class PlanetsList extends React.Component {
     }
 }
 
-export default PlanetsList;
+export default connect(null, {removePlanet})(PlanetsList);

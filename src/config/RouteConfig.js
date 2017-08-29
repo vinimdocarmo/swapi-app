@@ -4,7 +4,7 @@ import FilmsPage from '../pages/FilmsPage';
 import SpeciesPage from '../pages/SpeciesPage';
 import VehiclesPage from '../pages/VehiclesPage';
 import StarshipsPage from '../pages/StarshipsPage';
-import PlanetPage from '../pages/PlanetsPage';
+import PlanetPage from '../containers/PlanetsPage';
 import {pushStateLocationPlugin} from '@uirouter/react';
 
 export default class RouteConfig {
