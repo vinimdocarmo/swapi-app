@@ -3,8 +3,14 @@ import { FETCH_SPECIES } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchSpecies(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getSpecies()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedSpecies(species) {
     return { type: FETCH_SPECIES, payload: species };
+}
+
+function shouldFetchSpecies({species}) {
+    return species.results.length === 0;
 }

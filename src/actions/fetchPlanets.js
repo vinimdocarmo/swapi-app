@@ -3,8 +3,14 @@ import { FETCH_PLANETS } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchPlanets(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getPlanets()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedPlanets(planets) {
     return { type: FETCH_PLANETS, payload: planets };
+}
+
+function shouldFetchPlanets({planets}) {
+    return planets.results.length === 0;
 }

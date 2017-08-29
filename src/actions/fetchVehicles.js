@@ -3,8 +3,14 @@ import { FETCH_VEHICLES } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchVehicles(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getVehicles()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedVehicles(vehicles) {
     return { type: FETCH_VEHICLES, payload: vehicles };
+}
+
+function shouldFetchVehicles({vehicles}) {
+    return vehicles.results.length === 0;
 }

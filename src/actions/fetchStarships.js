@@ -3,8 +3,14 @@ import { FETCH_STARSHIPS } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchStarships(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getStarships()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedStarships(starships) {
     return { type: FETCH_STARSHIPS, payload: starships };
+}
+
+function shouldFetchStarships({starships}) {
+    return starships.results.length === 0;
 }

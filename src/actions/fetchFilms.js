@@ -3,8 +3,14 @@ import { FETCH_FILMS } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchFilms(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getFilms()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedFilms(films) {
     return { type: FETCH_FILMS, payload: films };
+}
+
+function shouldFetchFilms(state) {
+    return state.films.results.length === 0;
 }

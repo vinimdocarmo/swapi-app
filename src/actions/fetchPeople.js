@@ -3,8 +3,14 @@ import { FETCH_PEOPLE } from './actions';
 import {startFetching, endFetching} from './loading';
 
 export default () => {
-    return dispatch => {
+    return (dispatch, getState) => {
+
+        if (!shouldFetchPeople(getState())) {
+            return Promise.resolve();
+        }
+
         dispatch(startFetching());
+
         return SWAPI
             .getPeople()
             .then(data => {
@@ -17,4 +23,8 @@ export default () => {
 
 function receivedPeople(people) {
     return { type: FETCH_PEOPLE, payload: people };
+}
+
+function shouldFetchPeople({people}) {
+    return people.results.length === 0;
 }
