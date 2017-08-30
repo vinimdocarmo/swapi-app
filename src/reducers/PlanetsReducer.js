@@ -1,4 +1,4 @@
-import {FETCH_PLANETS, REMOVE_PLANET, FETCH_PLANETS_NEXT_PAGE} from '../actions/actions';
+import {FETCH_PLANETS, REMOVE_PLANET, FETCH_PLANETS_NEXT_PAGE, CREATE_PLANET} from '../actions/actions';
 
 const INITIAL_STATE = {results: []};
 
@@ -12,6 +12,8 @@ export default (state = INITIAL_STATE, action) => {
             });
         case FETCH_PLANETS_NEXT_PAGE:
             return Object.assign({}, state, {...action.payload, results: state.results.concat(action.payload.results)});
+        case CREATE_PLANET:
+            return Object.assign({}, state, { results: [action.payload].concat(state.results) });
         default:
             return state;
     }
