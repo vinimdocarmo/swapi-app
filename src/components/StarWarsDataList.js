@@ -40,7 +40,7 @@ class StarWarsDateList extends React.Component {
         return (
             <div className={classes.container}>
                 <Paper className={classes.root}>
-                    <GridList cellHeight={260} cols={3} className={classes.gridList}>
+                    <GridList cellHeight={350} cols={6} className={classes.gridList}>
                         {dataList.map(data =>
                             <GridListTile key={data.img}>
                                 <img src={data.img} alt={data.title}/>
