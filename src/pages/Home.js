@@ -9,45 +9,43 @@ export default class Home extends Component {
         super(props);
         const routeStates = RouteConfig.states;
 
-        this.state = {
-            dataList: [
-                {
-                    img: '/assets/planets.jpg',
-                    title: 'Planets',
-                    routeName: routeStates.planets.name
-                },
-                {
-                    img: '/assets/starships.jpg',
-                    title: 'Starships',
-                    routeName: routeStates.starships.name
-                },
-                {
-                    img: '/assets/vehicles.jpg',
-                    title: 'Vehicles',
-                    routeName: routeStates.vehicles.name
-                },
-                {
-                    img: '/assets/people.jpg',
-                    title: 'People',
-                    routeName: routeStates.people.name
-                },
-                {
-                    img: '/assets/films.jpg',
-                    title: 'Films',
-                    routeName: routeStates.films.name
-                },
-                {
-                    img: '/assets/species.jpg',
-                    title: 'Species',
-                    routeName: routeStates.species.name
-                }
-            ]
-        };
+        this.dataList = [
+            {
+                img: '/assets/planets.jpg',
+                title: 'Planets',
+                routeName: routeStates.planets.name
+            },
+            {
+                img: '/assets/starships.jpg',
+                title: 'Starships',
+                routeName: routeStates.starships.name
+            },
+            {
+                img: '/assets/vehicles.jpg',
+                title: 'Vehicles',
+                routeName: routeStates.vehicles.name
+            },
+            {
+                img: '/assets/people.jpg',
+                title: 'People',
+                routeName: routeStates.people.name
+            },
+            {
+                img: '/assets/films.jpg',
+                title: 'Films',
+                routeName: routeStates.films.name
+            },
+            {
+                img: '/assets/species.jpg',
+                title: 'Species',
+                routeName: routeStates.species.name
+            }
+        ];
     }
 
     render() {
         return (
-            <StarWarDataList dataList={this.state.dataList}/>
+            <StarWarDataList dataList={this.dataList}/>
         );
     }
 }

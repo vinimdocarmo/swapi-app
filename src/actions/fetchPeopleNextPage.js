@@ -1,6 +1,6 @@
 import SWAPI from '../api/SWAPI';
 import {FETCH_PEOPLE_NEXT_PAGE} from './actions';
-import {startFetching, endFetching} from './loading';
+import fetchingManager from './fetchingManager';
 
 export default () => {
     return (dispatch, getState) => {
@@ -11,14 +11,9 @@ export default () => {
             return Promise.resolve();
         }
 
-        dispatch(startFetching());
+        const fetchNextPage = SWAPI.getNextPage.bind(SWAPI, currentState.people.next);
 
-        return SWAPI
-            .getNextPage(currentState.people.next)
-            .then(data => {
-                dispatch(endFetching());
-                return data;
-            })
+        return fetchingManager(fetchNextPage)(dispatch)
             .then(data => dispatch(receivedNextPage(data)));
     }
 }

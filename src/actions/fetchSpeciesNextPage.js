@@ -1,6 +1,6 @@
 import SWAPI from '../api/SWAPI';
 import { FETCH_SPECIES_NEXT_PAGE } from './actions';
-import {startFetching, endFetching} from './loading';
+import fetchingManager from './fetchingManager';
 
 export default () => {
     return (dispatch, getState) => {
@@ -11,14 +11,9 @@ export default () => {
             return Promise.resolve();
         }
 
-        dispatch(startFetching());
+        const fetchNextPagePromise = SWAPI.getNextPage.bind(SWAPI, currentState.species.next);
 
-        return SWAPI
-            .getNextPage(currentState.species.next)
-            .then(data => {
-                dispatch(endFetching());
-                return data;
-            })
+        return fetchingManager(fetchNextPagePromise)(dispatch)
             .then(data => dispatch(receivedNextPage(data)));
     }
 }

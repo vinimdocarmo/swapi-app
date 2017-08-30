@@ -1,6 +1,6 @@
 import SWAPI from '../api/SWAPI';
 import { FETCH_STARSHIPS } from './actions';
-import {startFetching, endFetching} from './loading';
+import fetchingManager from './fetchingManager';
 
 export default () => {
     return (dispatch, getState) => {
@@ -9,14 +9,7 @@ export default () => {
             return Promise.resolve();
         }
 
-        dispatch(startFetching());
-
-        return SWAPI
-            .getStarships()
-            .then(data => {
-                dispatch(endFetching());
-                return data;
-            })
+        return fetchingManager(SWAPI.getStarships)(dispatch)
             .then(data => dispatch(receivedStarships(data)));
     }
 }
