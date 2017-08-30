@@ -4,10 +4,6 @@ import Button from 'material-ui/Button';
 import PropTypes from 'prop-types';
 
 class ConfirmRemoveDialog extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Dialog open={this.props.open} onRequestClose={() => this.props.onRequestClose(false)}>
