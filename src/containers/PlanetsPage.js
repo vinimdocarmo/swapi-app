@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 import fetchPlanets from '../actions/fetchPlanets';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import PlanetDialog from '../components/PlanetDialog';
+import PlanetDialog from './PlanetDialog';
+import {MODES as PLANET_DIALOG_MODES} from './PlanetDialog';
 
 class PlanetsPage extends Component {
     constructor(props) {
@@ -21,13 +22,14 @@ class PlanetsPage extends Component {
 
     handleRequestClose() {
         this.setState({ planetDialogOpen: false });
-    };
+    }
 
     render() {
         return (
             <div style={{display: 'flex',justifyContent: 'center'}}>
                 <PlanetsList planets={this.props.planets}/>
-                <PlanetDialog open={this.state.planetDialogOpen} onRequestClose={this.handleRequestClose}/>
+                <PlanetDialog open={this.state.planetDialogOpen} onRequestClose={this.handleRequestClose}
+                mode={PLANET_DIALOG_MODES.CREATE}/>
                 <Button fab={true} color="primary" aria-label="add"
                         onClick={() => this.setState({ planetDialogOpen: true })}
                         style={{position: 'fixed', right: '20px', bottom: '20px'}}>

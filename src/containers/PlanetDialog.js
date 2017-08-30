@@ -11,6 +11,9 @@ import {FormHelperText} from 'material-ui/Form';
 import InputLabel from 'material-ui/Input/InputLabel';
 import FormControl from 'material-ui/Form/FormControl';
 import createPlanet from '../actions/createPlanet';
+import editPlanet from '../actions/editPlanet';
+
+export const MODES = {CREATE: 'CREATE', EDIT: 'EDIT'};
 
 class PlanetDialog extends Component {
     constructor(props) {
@@ -20,16 +23,28 @@ class PlanetDialog extends Component {
             open: false,
             planetName: '',
             planetTerrain: '',
-            planetDiameter: 1
+            planetDiameter: 1,
         };
 
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleTerrainChange = this.handleTerrainChange.bind(this);
         this.handleDiameterChange = this.handleDiameterChange.bind(this);
-        this.handleSave = this.handleSave.bind(this);
+        this.handleSave = this.props.mode === MODES.CREATE ? this.handleCreate.bind(this) : this.handleEdit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.clearPlanet = this.clearPlanet.bind(this);
         this.handleEntering = this.handleEntering.bind(this);
+    }
+
+    componentWillReceiveProps({planet}) {
+        if (this.props.mode === MODES.EDIT) {
+            this.oldName = planet.name;
+
+            this.setState({
+                planetName: planet.name,
+                planetTerrain: planet.terrain,
+                planetDiameter: planet.diameter
+            });
+        }
     }
 
     inputName = null;
@@ -50,7 +65,7 @@ class PlanetDialog extends Component {
         this.setState({planetDiameter: event.target.value});
     }
 
-    handleSave() {
+    handleCreate() {
         const planet = {
             name: this.state.planetName,
             terrain: this.state.planetTerrain,
@@ -58,6 +73,18 @@ class PlanetDialog extends Component {
         };
 
         this.props.createPlanet(planet);
+        this.clearPlanet();
+        this.props.onRequestClose();
+    }
+
+    handleEdit() {
+        const planet = {
+            name: this.state.planetName,
+            terrain: this.state.planetTerrain,
+            diameter: this.state.planetDiameter
+        };
+
+        this.props.editPlanet(this.oldName, planet);
         this.clearPlanet();
         this.props.onRequestClose();
     }
@@ -72,8 +99,9 @@ class PlanetDialog extends Component {
 
     render() {
         return (
-            <Dialog maxWidth="xs" open={this.props.open} onRequestClose={this.props.onRequestClose} onEntering={this.handleEntering}>
-                <DialogTitle>Create Planet</DialogTitle>
+            <Dialog maxWidth="xs" open={this.props.open} onRequestClose={this.props.onRequestClose}
+                    onEntering={this.handleEntering}>
+                <DialogTitle>{this.props.mode === MODES.CREATE ? 'Create' : 'Edit'} Planet</DialogTitle>
                 <DialogContent>
                     <TextField
                         id="name"
@@ -118,7 +146,8 @@ class PlanetDialog extends Component {
 
 PlanetDialog.propTypes = {
     onRequestClose: PropTypes.func,
-    open: PropTypes.bool
+    open: PropTypes.bool,
+    mode: PropTypes.string
 };
 
-export default connect(null, {createPlanet})(PlanetDialog);
+export default connect(null, {createPlanet, editPlanet})(PlanetDialog);
