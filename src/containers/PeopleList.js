@@ -25,7 +25,7 @@ class PeopleList extends React.Component {
         const peopleList = this.state.people.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>People</ListSubheader>}>
                     {
                         peopleList.map(person =>

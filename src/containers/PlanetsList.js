@@ -28,7 +28,7 @@ class PlanetsList extends React.Component {
         const planetsList = this.state.planets.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>Planets</ListSubheader>}>
                     {
                         planetsList.map(planet =>

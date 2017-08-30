@@ -12,7 +12,9 @@ class StarshipsPage extends Component {
 
     render() {
         return (
-            <StarshipsList starships={this.props.starships}/>
+            <div style={{display: 'flex',justifyContent: 'center'}}>
+                <StarshipsList starships={this.props.starships}/>
+            </div>
         );
     }
 }

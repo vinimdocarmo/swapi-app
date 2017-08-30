@@ -25,7 +25,7 @@ class FilmsList extends React.Component {
         const filmsList = this.state.films.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>Films</ListSubheader>}>
                     {
                         filmsList.map(film =>

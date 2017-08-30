@@ -24,7 +24,7 @@ class StarshipsList extends React.Component {
         const starshipsList = this.state.starships.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>Starships</ListSubheader>}>
                     {
                         starshipsList.map(starships =>

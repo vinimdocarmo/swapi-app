@@ -12,7 +12,9 @@ class VehiclesPage extends Component {
 
     render() {
         return (
-            <VehiclesList vehicles={this.props.vehicles}/>
+            <div style={{display: 'flex',justifyContent: 'center'}}>
+                <VehiclesList vehicles={this.props.vehicles}/>
+            </div>
         );
     }
 }

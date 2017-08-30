@@ -12,7 +12,9 @@ class SpeciesPage extends Component {
 
     render() {
         return (
-            <SpeciesList species={this.props.species}/>
+            <div style={{display: 'flex',justifyContent: 'center'}}>
+                <SpeciesList species={this.props.species}/>
+            </div>
         );
     }
 }

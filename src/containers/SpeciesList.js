@@ -25,7 +25,7 @@ class SpeciesList extends React.Component {
         const speciesList = this.state.species.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>Species</ListSubheader>}>
                     {
                         speciesList.map(specie =>

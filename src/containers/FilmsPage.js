@@ -12,7 +12,9 @@ class FilmsPage extends Component {
 
     render() {
         return (
-            <FilmsList films={this.props.films}/>
+            <div style={{display: 'flex',justifyContent: 'center'}}>
+                <FilmsList films={this.props.films}/>
+            </div>
         );
     }
 }

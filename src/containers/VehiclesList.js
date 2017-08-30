@@ -25,7 +25,7 @@ class VehiclesList extends React.Component {
         const vehiclesList = this.state.vehicles.results || [];
 
         return (
-            <div>
+            <div style={{minWidth: '800px'}}>
                 <List subheader={<ListSubheader>Vehicles</ListSubheader>}>
                     {
                         vehiclesList.map(vehicle =>

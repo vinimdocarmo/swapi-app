@@ -12,7 +12,9 @@ class PeoplePage extends Component {
 
     render() {
         return (
-            <PeopleList people={this.props.people}/>
+            <div style={{display: 'flex',justifyContent: 'center'}}>
+                <PeopleList people={this.props.people}/>
+            </div>
         );
     }
 }
