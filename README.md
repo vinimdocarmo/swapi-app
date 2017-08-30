@@ -6,6 +6,8 @@ Clone the code in your local machine:
 
 ```bash
 git clone https://github.com/vinimdocarmo/swapi-app.git
+
+cd swapi-app
 ```
 
 Install it and run:
