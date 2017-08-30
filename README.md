@@ -1,12 +1,11 @@
-# Create React App example
+# Star Wars Wiki
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/callemall/material-ui):
+Clone the code in your local machine:
 
 ```bash
-curl https://codeload.github.com/callemall/material-ui/tar.gz/v1-beta | tar -xz --strip=2 material-ui-v1-beta/examples/create-react-app
-cd create-react-app
+git clone https://github.com/vinimdocarmo/swapi-app.git
 ```
 
 Install it and run:
@@ -15,7 +14,3 @@ Install it and run:
 npm install
 npm run start
 ```
-
-## The idea behind the example
-
-[Create React App](https://github.com/facebookincubator/create-react-app) with no build configuration.
