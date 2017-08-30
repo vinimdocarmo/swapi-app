@@ -1,5 +1,6 @@
 {
-  "name": "create-react-app",
+  "name": "swapi-app",
+  "homepage" : "http://vinimdocarmo.com/swaip-app",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
