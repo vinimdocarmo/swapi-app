@@ -41,6 +41,10 @@ export default class SWAPI {
             .get('/species')
             .then(property('data'));
     }
+
+    static getNextPage(url) {
+        return axios.get(url).then(property('data'));
+    }
 };
 
 function property(prop) {

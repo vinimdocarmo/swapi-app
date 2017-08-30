@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import VehiclesList from '../components/VehiclesList';
+import VehiclesList from './VehiclesList';
 import fetchVehicles from '../actions/fetchVehicles';
 
 class VehiclesPage extends Component {

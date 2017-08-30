@@ -25,7 +25,7 @@ class PlanetsPage extends Component {
                 <PlanetDialog open={this.state.planetDialogOpen}/>
                 <Button fab={true} color="primary" aria-label="add"
                         onClick={() => this.setState({planetDialogOpen: true})}
-                        style={{position: 'absolute', right: '20px', bottom: '20px'}}>
+                        style={{position: 'fixed', right: '20px', bottom: '20px'}}>
                     <AddIcon/>
                 </Button>
             </div>

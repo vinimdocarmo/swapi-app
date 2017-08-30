@@ -1,7 +1,7 @@
 // @flow weak
 
 import React, { Component } from 'react';
-import FilmsList from '../components/FilmsList';
+import FilmsList from './FilmsList';
 import fetchFilms from '../actions/fetchFilms';
 import {connect} from 'react-redux';
 

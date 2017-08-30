@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import SpeciesList from '../components/SpeciesList';
+import SpeciesList from './SpeciesList';
 import fetchSpecies from '../actions/fetchSpecies';
 
 class SpeciesPage extends Component {

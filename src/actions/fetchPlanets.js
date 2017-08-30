@@ -21,8 +21,8 @@ export default () => {
     }
 }
 
-function receivedPlanets(planets) {
-    return { type: FETCH_PLANETS, payload: planets };
+function receivedPlanets({results, next, count}) {
+    return { type: FETCH_PLANETS, payload: {results, next, count} };
 }
 
 function shouldFetchPlanets({planets}) {

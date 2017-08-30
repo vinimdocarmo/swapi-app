@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import PeopleList from '../components/PeopleList';
+import PeopleList from './PeopleList';
 import fetchPeople from '../actions/fetchPeople';
 
 class PeoplePage extends Component {

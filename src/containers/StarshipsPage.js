@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import StarshipsList from '../components/StarshipsList';
+import StarshipsList from './StarshipsList';
 import fetchStarships from '../actions/fetchStarships';
 
 class StarshipsPage extends Component {

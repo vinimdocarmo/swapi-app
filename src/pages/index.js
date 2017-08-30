@@ -30,7 +30,7 @@ class Index extends Component {
         return (
             <UIRouter plugins={RouteConfig.plugins} states={Object.values(RouteConfig.states)}>
                 <div>
-                    <AppBar position="static">
+                    <AppBar position="fixed">
                         <Toolbar>
                             <IconButton color="contrast" aria-label="Menu"
                             onClick={() => this.handleSideNavOpen()}>
@@ -45,10 +45,12 @@ class Index extends Component {
                             </Typography>
                             <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
                         </Toolbar>
+                        <Progress/>
                     </AppBar>
-                    <Progress/>
                     <SideNav open={this.state.sideNavOpen}/>
-                    <UIView/>
+                    <div style={{marginTop: '65px'}}>
+                        <UIView/>
+                    </div>
                 </div>
             </UIRouter>
         );
