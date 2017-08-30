@@ -18,7 +18,7 @@ class NextPageButton extends Component {
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 <Button disabled={this.state.disabled || this.props.isFetchingData} raised dense
                         onClick={() => this.props.onNextPage()} color="primary">
-                    laod more
+                    load more
                 </Button>
             </div>
         );
