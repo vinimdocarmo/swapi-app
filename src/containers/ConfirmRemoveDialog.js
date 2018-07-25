@@ -6,15 +6,15 @@ import PropTypes from 'prop-types';
 class ConfirmRemoveDialog extends Component {
     render() {
         return (
-            <Dialog open={this.props.open} onRequestClose={() => this.props.onRequestClose(false)}>
+            <Dialog open={this.props.open} whenClosing={() => this.props.whenClosing(false)}>
                 <DialogTitle>
                     {"Confirm item removal?"}
                 </DialogTitle>
                 <DialogActions>
-                    <Button onClick={() => this.props.onRequestClose(false)} color="primary">
+                    <Button onClick={() => this.props.whenClosing(false)} color="primary">
                         Disagree
                     </Button>
-                    <Button onClick={() => this.props.onRequestClose(true)} color="primary">
+                    <Button onClick={() => this.props.whenClosing(true)} color="primary">
                         Agree
                     </Button>
                 </DialogActions>
@@ -24,7 +24,7 @@ class ConfirmRemoveDialog extends Component {
 }
 
 ConfirmRemoveDialog.propTypes = {
-    onRequestClose: PropTypes.func,
+    whenClosing: PropTypes.func,
     open: PropTypes.bool
 };
 

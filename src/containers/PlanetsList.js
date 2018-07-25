@@ -72,9 +72,9 @@ class PlanetsList extends React.Component {
                 </List>
                 <NextPageButton disabled={!this.canFetchNextPage()}
                                 onNextPage={this.props.fetchPlanetsNextPage}/>
-                <PlanetDialog open={this.state.planetDialogOpen} onRequestClose={this.handleEditionRequestClone}
+                <PlanetDialog open={this.state.planetDialogOpen} whenClosing={this.handleEditionRequestClone}
                               mode={PLANET_DIALOG_MODES.EDIT} planet={this.state.selectedPlanet}/>
-                <ConfirmRemoveDialog open={this.state.removeDialogOpen} onRequestClose={this.handleRemovalRequestClone}/>
+                <ConfirmRemoveDialog open={this.state.removeDialogOpen} whenClosing={this.handleRemovalRequestClone}/>
             </div>
         );
     }

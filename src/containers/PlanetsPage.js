@@ -28,7 +28,7 @@ class PlanetsPage extends Component {
         return (
             <div style={{display: 'flex',justifyContent: 'center'}}>
                 <PlanetsList planets={this.props.planets}/>
-                <PlanetDialog open={this.state.planetDialogOpen} onRequestClose={this.handleRequestClose}
+                <PlanetDialog open={this.state.planetDialogOpen} whenClosing={this.handleRequestClose}
                 mode={PLANET_DIALOG_MODES.CREATE}/>
                 <Button fab={true} color="primary" aria-label="add"
                         onClick={() => this.setState({ planetDialogOpen: true })}

@@ -32,7 +32,7 @@ class Index extends Component {
                 <div>
                     <AppBar position="fixed">
                         <Toolbar>
-                            <IconButton color="contrast" aria-label="Menu"
+                            <IconButton color="secondary" aria-label="Menu"
                             onClick={() => this.handleSideNavOpen()}>
                                 <MenuIcon />
                             </IconButton>
@@ -43,7 +43,7 @@ class Index extends Component {
                                     </UISref>
                                 </UISrefActive>
                             </Typography>
-                            <Button href="https://github.com/vinimdocarmo/swapi-app" color="contrast">GitHub</Button>
+                            <Button href="https://github.com/vinimdocarmo/swapi-app" color="secondary">GitHub</Button>
                         </Toolbar>
                         <Progress/>
                     </AppBar>

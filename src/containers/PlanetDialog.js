@@ -74,7 +74,7 @@ class PlanetDialog extends Component {
 
         this.props.createPlanet(planet);
         this.clearPlanet();
-        this.props.onRequestClose();
+        this.props.whenClosing();
     }
 
     handleEdit() {
@@ -86,7 +86,7 @@ class PlanetDialog extends Component {
 
         this.props.editPlanet(this.oldName, planet);
         this.clearPlanet();
-        this.props.onRequestClose();
+        this.props.whenClosing();
     }
 
     clearPlanet() {
@@ -94,12 +94,12 @@ class PlanetDialog extends Component {
     }
 
     handleCancel() {
-        this.props.onRequestClose();
+        this.props.whenClosing();
     };
 
     render() {
         return (
-            <Dialog maxWidth="xs" open={this.props.open} onRequestClose={this.props.onRequestClose}
+            <Dialog maxWidth="xs" open={this.props.open} whenClosing={this.props.whenClosing}
                     onEntering={this.handleEntering}>
                 <DialogTitle>{this.props.mode === MODES.CREATE ? 'Create' : 'Edit'} Planet</DialogTitle>
                 <DialogContent>
@@ -145,7 +145,7 @@ class PlanetDialog extends Component {
 }
 
 PlanetDialog.propTypes = {
-    onRequestClose: PropTypes.func,
+    whenClosing: PropTypes.func,
     open: PropTypes.bool,
     mode: PropTypes.string
 };

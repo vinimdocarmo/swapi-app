@@ -39,7 +39,7 @@ class SideNav extends Component {
         const {states} = RouteConfig;
 
         return (
-            <Drawer open={this.state.open} onRequestClose={this.handleClose}>
+            <Drawer open={this.state.open} whenClosing={this.handleClose}>
                 <List className={classes.list}>
                     <ListItem button onClick={this.handleClose}>
                         <UISrefActive class="active">
