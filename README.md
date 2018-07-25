@@ -1,5 +1,7 @@
 # Star Wars Wiki
 
+![screenshot](https://github.com/vinimdocarmo/swapi-app/blob/master/screenshot.png)
+
 ## How to use
 
 Clone the code in your local machine:
